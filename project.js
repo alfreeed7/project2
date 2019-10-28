@@ -1,15 +1,16 @@
 var filmpromise=d3.json("https://swapi.co/api/films/");
 filmpromise.then
 (
-    function(SW)
+    function(film)
     {
         seth1();
-        console.log("star wars",SW);
-        buildTable(SW);
+        console.log("films",film);
+        filmsname(film);
+        intro(film);
     }, 
     function(err)
 {
-    seth1("Nah");}
+    console.log("fail",err)}
 )
 
 var seth1 = function()
@@ -17,13 +18,23 @@ var seth1 = function()
         d3.select("h1").text("Star Wars App")
     }
 
-var buildTable = function (SW)
+var filmsname= function (film)
 {
-d3.select("thead")
-    .selectAll("tr")
-    .data(SW)
+d3.select(".films")
+    .selectAll("th")
+    .data(film.results)
     .enter()
-    .append("tr")
-    .append("td")
-    .text(function(SW){return SW.title})
+    .append("th")
+    .text(function(d){return d.title;})
+}
+
+
+var intro=function (film)
+{
+    d3.select(".planets")
+    .selectAll("p")
+    .data(film.results)
+    .enter()
+    .append("p")
+    .text(function(d){return d.opening_crawl;})
 }

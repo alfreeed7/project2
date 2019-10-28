@@ -1,0 +1,15 @@
+h1
+{text-align: center;}
+
+.films
+{
+    width: 80%;
+    margin-left: 10%;
+   border-collapse: collapse; 
+}
+
+.films > th
+{
+    padding-right: 50px;
+    font-size: 19px;
+}
