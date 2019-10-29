@@ -6,8 +6,7 @@ filmpromise.then
         seth1();
         console.log("films",film);
         filmsname(film);
-        intro(film);
-    }, 
+    },
     function(err)
 {
     console.log("fail",err)}
@@ -26,10 +25,10 @@ d3.select(".films")
     .enter()
     .append("th")
     .text(function(d){return d.title;})
+    .on("click",function(){intro(film)})
 }
 
-
-var intro=function (film)
+var intro=function (film,index)
 {
     d3.select(".planets")
     .selectAll("p")
