@@ -6,11 +6,14 @@ filmpromise.then
         seth1();
         console.log("films",film);
         filmsname(film);
+        picture(film);
     },
     function(err)
 {
     console.log("fail",err)}
 )
+
+var pics=["a new hope.jpg","Attack of the Clones.jpg","The Phantom Menace.jpg","Revenge of the Sith.jpg","Return of the Jedi.jpg","The Empire Strikes Back.jpg","The Force Awakens.jpg"];
 
 var seth1 = function()
     {
@@ -28,7 +31,15 @@ d3.select(".films")
     .on("click",function(){intro(film)})
 }
 
-var intro=function (film,index)
+var picture=function(film)
+{
+d3.select(".films")
+    .selectAll("th")
+    .append("img")
+    .attr("src",pics)
+}
+
+var intro=function (film)
 {
     d3.select(".planets")
     .selectAll("p")
