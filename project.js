@@ -6,7 +6,7 @@ filmpromise.then
         seth1();
         console.log("films",film);
         filmsname(film);
-        picture(film);
+        pictures(film);
     },
     function(err)
 {
@@ -31,10 +31,11 @@ d3.select(".films")
     .on("click",function(){intro(film)})
 }
 
-var picture=function(film)
+var pictures=function(film)
 {
 d3.select(".films")
-    .selectAll("th")
+    .selectAll("tr")
+    .append("td")
     .append("img")
     .attr("src",pics)
 }
