@@ -47,7 +47,6 @@ var filmsname= function (film)
         {removeintro();
         intro(f)})  
     
-    
 }
 
 var removeintro=function()
@@ -61,8 +60,8 @@ add.append("h3")
     .text(film.title)
     add.append("p")
     .text(film.opening_crawl);
+    add.append("p")
 }
-
 
 
 var addplanet = function(planet) {
