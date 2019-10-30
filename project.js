@@ -71,11 +71,13 @@ var addplanet = function(planet) {
                     .attr("y", 0)
                     .attr("width", 100)
                     .attr("height", 50)
-    .text("sb")
                     .attr("fill", "gray")
                     .on("click", function(p) 
     {                    
- 
+ var textrect=d3.select("rect")
+ .append("p")
+ .text("SB")
+    
     var newcol=d3.select(".planet")
     .selectAll("tr")
     .data(planet)
@@ -97,9 +99,11 @@ var addplanet = function(planet) {
     
         newcol.append("td")
     .text(function(d){return d.climate;})
+                                newcol.append("td")
+    .text(function(d){return d.gravity;})
     
         newcol.append("td")
-    .text(function(d){return d.gravity;})
+    .text(function(d){return d.terrain;})
     
         newcol.append("td")
     .text(function(d){return d.surface_water;})

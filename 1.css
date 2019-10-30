@@ -32,6 +32,32 @@ img
 img:hover
 
 {
-    height:230px;
+    height:250px;
     transition: 0.6s;
 }
+
+
+.intro
+{
+    background-color: #4b6686d4;
+}
+
+.planet
+{
+    background-color: #4b6686d4;
+        border-collapse: collapse;
+    border-spacing: 0px;
+}
+
+.planet > th,td
+{   border: 1px solid;
+    padding: 6px;
+    background-color: #352137ad;
+    font-size: 18px;}
+
+
+#n, #rp,#op,#dia,#cli,#gra,#ter,#sw,#pop
+{   border: 1px solid;
+    padding: 6px;
+    background-color: #352137ad;
+    font-size: 18px;}
