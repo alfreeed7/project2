@@ -32,17 +32,22 @@ var seth1 = function()
         d3.select("h1").text("Star Wars App")
     }
 
+
+var pics=["a new hope.jpg","Attack%20of%20the%20Clones.jpg","The%20Phantom%20Menace.jpg","Revenge%20of%20the%20Sith.jpg","Return%20of%20the%20Jedi.jpg","The%20Empire%20Strikes%20Back.jpg","The%20Force%20Awakens.jpg"]
+
 var filmsname= function (film)
 { 
     d3.select(".films")
-    .selectAll("th")
+    .selectAll("img")
     .data(film)
     .enter()
-    .append("th")
-    .text(function(d){return d.title;})
-    .on("click",function(f)
+    .append("img")
+    .attr("src",function(f,i){return pics[i]})
+    .on("click",function(f,i)
         {removeintro();
         intro(f)})  
+    
+    
 }
 
 var removeintro=function()
