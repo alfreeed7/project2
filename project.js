@@ -45,7 +45,10 @@ var filmsname= function (film)
     .attr("src",function(f,i){return pics[i]})
     .on("click",function(f,i)
         {removeintro();
-        intro(f)})  
+        intro(f);
+        console.log(f.planets);
+        addplanet(f.planets);
+        })  
     
 }
 
@@ -71,12 +74,24 @@ var addplanet = function(planet) {
                     .attr("width", 100)
                     .attr("height", 50)
                     .attr("fill", "gray")
-                    .on("click", function(p) 
-    {                    
+                    .on("click", function() 
+    {    
+ 
  var textrect=d3.select("rect")
  .append("p")
  .text("SB")
+    console.log(planet);
+    var PlanetPromises = planet.map(function(planet){
+        return d3.json(planet);
+    })
+    console.log(PlanetPromises);
+    promise.all(PlanetPromises).then(function(planets)
+    {
+                                     
     
+                        
+                        
+                        
     var newcol=d3.select(".planet")
     .selectAll("tr")
     .data(planet)
@@ -111,4 +126,5 @@ var addplanet = function(planet) {
     .text(function(d){return d.population;})
                     })
     
-}
+})
+    }
