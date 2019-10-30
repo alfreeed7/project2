@@ -57,25 +57,13 @@ var intro=function (film)
 {
     console.log(film)
 var add=d3.select(".intro")
-add.append("h2")
-    .text("Introduction of the Film")
+add.append("h3")
+    .text(film.title)
     add.append("p")
     .text(film.opening_crawl);
 }
 
-//var rec = d3.select(".planets")
-//.append("rect")
-//.attr("width", 50)
-//.attr("height", 50)
-//.text("click me");
 
-//var button=document.createElement("button");
-//button.innerHTML="SB"
-//
-//var appendit=document.getElementsByClassName("planets");
-//appendit.appendChild(button);
-//
-//button.addEventListener("click",function(planet){addplanet(planet)})
 
 var addplanet = function(planet) {
     var rect = d3.select("svg").append("rect")
