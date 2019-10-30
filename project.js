@@ -13,13 +13,13 @@ filmpromise.then
     console.log("fail",err)}
 )
 
-var filmpromise=d3.json("https://swapi.co/api/planets/");
-filmpromise.then
+var planetpromise=d3.json("https://swapi.co/api/planets/");
+planetpromise.then
 (
     function(planet)
-    {
-        console.log("planets",planet);
-        addplanet(planet.results);
+    { 
+     console.log("planets",planet)
+     addplanet(planet.results);
     },
     function(err)
 {
@@ -42,13 +42,11 @@ var filmsname= function (film)
     .text(function(d){return d.title;})
     .on("click",function(f)
         {removeintro();
-        intro(f)})
-    
+        intro(f)})  
 }
 
 var removeintro=function()
 {d3.selectAll(".intro *").remove();}
-
 
 var intro=function (film)
 {
@@ -60,10 +58,30 @@ var add=d3.select(".intro")
     .text(film.release_date);
 }
 
-var addplanet=function(planet)
+//var rec = d3.select(".planets")
+//.append("rect")
+//.attr("width", 50)
+//.attr("height", 50)
+//.text("click me");
 
-{
-    var newcol=d3.select(".planet")
+//var button=document.createElement("button");
+//button.innerHTML="SB"
+//
+//var appendit=document.getElementsByClassName("planets");
+//appendit.appendChild(button);
+//
+//button.addEventListener("click",function(planet){addplanet(planet)})
+
+var addplanet = function(planet) {
+    var rect = d3.select("svg").append("rect")
+                    .attr("x", 0)
+                    .attr("y", 0)
+                    .attr("width", 100)
+                    .attr("height", 50)
+    .text("sb")
+                    .attr("fill", "gray")
+                    .on("click", function(p) {
+                       var newcol=d3.select(".planet")
     .selectAll("tr")
     .data(planet)
     .enter()
@@ -92,5 +110,6 @@ var addplanet=function(planet)
     
         newcol.append("td")
     .text(function(d){return d.population;})
+                    })
     
 }
