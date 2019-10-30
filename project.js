@@ -52,10 +52,10 @@ var intro=function (film)
 {
     console.log(film)
 var add=d3.select(".intro")
+add.append("h2")
+    .text("Introduction of the Film")
     add.append("p")
     .text(film.opening_crawl);
-    add.append("p")
-    .text(film.release_date);
 }
 
 //var rec = d3.select(".planets")
@@ -80,14 +80,17 @@ var addplanet = function(planet) {
                     .attr("height", 50)
     .text("sb")
                     .attr("fill", "gray")
-                    .on("click", function(p) {
-                       var newcol=d3.select(".planet")
+                    .on("click", function(p) 
+    {                    
+ 
+    var newcol=d3.select(".planet")
     .selectAll("tr")
     .data(planet)
     .enter()
     .append("tr")
 
-    newcol.append("td")
+    newcol
+    .append("td")
     .text(function(d){return d.name;})
     
     newcol.append("td")
