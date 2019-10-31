@@ -61,3 +61,20 @@ img:hover
     padding: 6px;
     background-color: #352137ad;
     font-size: 18px;}
+
+svg
+{
+    margin-top: 40px;
+    background-color: #792929e8;
+    margin-bottom: 30px;
+}
+svg:hover
+{
+   background-color:#962323e8;
+    transition: 0.5s;
+}
+
+
+text
+{font-size: 22px;
+}
