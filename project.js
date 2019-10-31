@@ -20,6 +20,7 @@ planetpromise.then
     { 
      console.log("planets",planet)
      addplanet(planet.results);
+        makesort(planet.results);
     },
     function(err)
 {
@@ -45,10 +46,7 @@ var filmsname= function (film)
     .attr("src",function(f,i){return pics[i]})
     .on("click",function(f,i)
         {removeintro();
-        intro(f);
-        console.log(f.planets);
-        addplanet(f.planets);
-        })  
+        intro(f)})  
     
 }
 
@@ -68,31 +66,15 @@ add.append("h3")
 
 
 var addplanet = function(planet) {
-    var rect = d3.select("svg").append("rect")
-                    .attr("x", 0)
-                    .attr("y", 0)
-                    .attr("width", 100)
-                    .attr("height", 50)
-                    .attr("fill", "gray")
-                    .on("click", function() 
-    {    
- 
- var textrect=d3.select("rect")
- .append("p")
- .text("SB")
-    console.log(planet);
-    var PlanetPromises = planet.map(function(planet){
-        return d3.json(planet);
-    })
-    console.log(PlanetPromises);
-    promise.all(PlanetPromises).then(function(planets)
-    {
-                                     
+    var abcd = d3.select("svg")
+    .append("text").text('Click to Explore the Planets')
+    .attr("x", 2)
+    .attr("y", 35)
+    .attr("fill", "white")
+                    .on("click", function(p) 
+    {                    
     
-                        
-                        
-                        
-    var newcol=d3.select(".planet")
+    var newcol= d3.select(".planet")
     .selectAll("tr")
     .data(planet)
     .enter()
@@ -126,5 +108,27 @@ var addplanet = function(planet) {
     .text(function(d){return d.population;})
                     })
     
-})
-    }
+}
+
+var makesort = function(planet)
+{
+    sortCol(planet, "#rp", function (p) {return p.rotation_period;});
+    sortCol(planet, "#op", function (p) {return p.orbital_period;});
+    sortCol(planet, "#dia", function (p) {return p.diameter;});
+    sortCol(planet, "#gra", function (p) {return p.gravity;});
+    sortCol(planet, "#sw", function (p) {return p.surface_water;});
+    sortCol(planet, "#pop", function (p) {return p.population;});
+}
+
+var sortCol = function(planet, col, accessor)
+{
+    d3.select(col)
+        .on("click", function()
+            {
+            planet.sort(function(a, b)
+            {
+                return(accessor(a) - accessor(b));
+            })
+            addplanet(planet);
+        })
+}
