@@ -113,42 +113,58 @@ var addplanet = function(planet) {
 //  rp.push(planet[i].rotation_period)
 //}
     
-    planet.sort(function(a, b){
-    return a.rotation_period-b.rotation_period
-})
+
        d3.select("#rp")
       .on("click", function() {
+        planet.sort(function(a, b){
+    return a.rotation_period-b.rotation_period
+})
+ d3.select(".planet").selectAll("tr").remove()
+           d3.select(".planet").append("th").text("Name")
+           d3.select(".planet").append("th").text("Rotation_Period")
+           d3.select(".planet").append("th").text("Orbital_Period")
+           d3.select(".planet").append("th").text("Diameter")
+           d3.select(".planet").append("th").text("Climate")
+           d3.select(".planet").append("th").text("Gravity")
+           d3.select(".planet").append("th").text("Terrain")
+           d3.select(".planet").append("th").text("Surface_Water")
+           d3.select(".planet").append("th").text("Population")
+         
+          
+          
     var newcoll= d3.select(".planet")
-    .selectAll("td")
+    .selectAll("tr")
     .data(planet)
     .enter()
+    .append("tr")
 
     newcoll
+    .append("td")
     .text(function(d){return d.name;})
-    
-    newcoll
+           newcoll.append("td")
     .text(function(d){return d.rotation_period;})
     
-        newcoll
+        newcoll.append("td")
     .text(function(d){return d.orbital_period;})
     
-        newcoll
+        newcoll.append("td")
     .text(function(d){return d.diameter;})
     
-        newcoll
+        newcoll.append("td")
     .text(function(d){return d.climate;})
-                                newcoll
+                                newcoll.append("td")
     .text(function(d){return d.gravity;})
     
-        newcoll
+        newcoll.append("td")
     .text(function(d){return d.terrain;})
     
-        newcoll
+        newcoll.append("td")
     .text(function(d){return d.surface_water;})
     
-        newcoll
+        newcoll.append("td")
     .text(function(d){return d.population;})
-} )
+                    })
+
     
                     
 }
