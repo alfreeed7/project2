@@ -20,7 +20,7 @@ planetpromise.then
     { 
      console.log("planets",planet)
      addplanet(planet.results);
-        makesort(planet.results);
+        //makesort(planet.results);
     },
     function(err)
 {
@@ -47,11 +47,11 @@ var filmsname= function (film)
     .on("click",function(f,i)
         {removeintro();
         intro(f)})  
-    
 }
 
 var removeintro=function()
 {d3.selectAll(".intro *").remove();}
+
 
 var intro=function (film)
 {
@@ -108,27 +108,47 @@ var addplanet = function(planet) {
     .text(function(d){return d.population;})
                     })
     
-}
+//    var rp = []
+//    for (var i = 0; i < 10; i++) {
+//  rp.push(planet[i].rotation_period)
+//}
+    
+    planet.sort(function(a, b){
+    return a.rotation_period-b.rotation_period
+})
+       d3.select("#rp")
+      .on("click", function() {
+    var newcoll= d3.select(".planet")
+    .selectAll("td")
+    .data(planet)
+    .enter()
 
-var makesort = function(planet)
-{
-    sortCol(planet, "#rp", function (p) {return p.rotation_period;});
-    sortCol(planet, "#op", function (p) {return p.orbital_period;});
-    sortCol(planet, "#dia", function (p) {return p.diameter;});
-    sortCol(planet, "#gra", function (p) {return p.gravity;});
-    sortCol(planet, "#sw", function (p) {return p.surface_water;});
-    sortCol(planet, "#pop", function (p) {return p.population;});
-}
-
-var sortCol = function(planet, col, accessor)
-{
-    d3.select(col)
-        .on("click", function()
-            {
-            planet.sort(function(a, b)
-            {
-                return(accessor(a) - accessor(b));
-            })
-            addplanet(planet);
-        })
+    newcoll
+    .text(function(d){return d.name;})
+    
+    newcoll
+    .text(function(d){return d.rotation_period;})
+    
+        newcoll
+    .text(function(d){return d.orbital_period;})
+    
+        newcoll
+    .text(function(d){return d.diameter;})
+    
+        newcoll
+    .text(function(d){return d.climate;})
+                                newcoll
+    .text(function(d){return d.gravity;})
+    
+        newcoll
+    .text(function(d){return d.terrain;})
+    
+        newcoll
+    .text(function(d){return d.surface_water;})
+    
+        newcoll
+    .text(function(d){return d.population;})
+} )
+    
+                    
 }
