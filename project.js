@@ -1,4 +1,4 @@
-var filmPromise = d3.json("https://swapi.co/api/films/?format=json")
+var filmPromise = d3.json("https://swapi.co/api/films")
 filmPromise.then(
 function(film)
     
